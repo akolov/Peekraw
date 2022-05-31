@@ -1,0 +1,32 @@
+name: iOSAppTemplate
+options:
+  bundleIdPrefix: com.alexkolov
+targets:
+  iOSAppTemplate:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources: iOSAppTemplate
+    info:
+      path: iOSAppTemplate/Info.plist
+      properties:
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+  iOSAppTemplateTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources: iOSAppTemplateTests
+    dependencies:
+      - target: iOSAppTemplate
+  iOSAppTemplateUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources: iOSAppTemplateUITests
+    dependencies:
+      - target: iOSAppTemplate
