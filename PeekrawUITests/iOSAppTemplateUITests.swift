@@ -1,13 +1,13 @@
 //
-//  iOSAppTemplateUITests.swift
-//  iOSAppTemplateUITests
+//  PeekrawUITests.swift
+//  PeekrawUITests
 //
 //  Created by Alexander Kolov on 2022-05-31.
 //
 
 import XCTest
 
-class iOSAppTemplateUITests: XCTestCase {
+class PeekrawUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

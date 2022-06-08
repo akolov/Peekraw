@@ -1,32 +1,48 @@
-name: iOSAppTemplate
+name: Peekraw
 options:
   bundleIdPrefix: com.alexkolov
+  deploymentTarget:
+    iOS: "16.0"
 targets:
-  iOSAppTemplate:
+  Peekraw:
     type: application
     platform: iOS
-    deploymentTarget: "15.0"
-    sources: iOSAppTemplate
+    sources: Peekraw
     info:
-      path: iOSAppTemplate/Info.plist
+      path: Peekraw/Info.plist
       properties:
+        NSPhotoLibraryAddUsageDescription: "Test"
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
           UISceneConfigurations:
             UIWindowSceneSessionRoleApplication:
               - UISceneConfigurationName: Default Configuration
                 UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
-  iOSAppTemplateTests:
+        UILaunchStoryboardName: LaunchScreen
+    dependencies:
+      - package: Flow
+      - package: LibRawKit
+        product: RawKit
+      - package: SnapKit
+  PeekrawTests:
     type: bundle.unit-test
     platform: iOS
-    deploymentTarget: "15.0"
-    sources: iOSAppTemplateTests
+    sources: PeekrawTests
     dependencies:
-      - target: iOSAppTemplate
-  iOSAppTemplateUITests:
+      - target: Peekraw
+  PeekrawUITests:
     type: bundle.ui-testing
     platform: iOS
-    deploymentTarget: "15.0"
-    sources: iOSAppTemplateUITests
+    sources: PeekrawUITests
     dependencies:
-      - target: iOSAppTemplate
+      - target: Peekraw
+packages:
+  Flow:
+    url: https://github.com/alexito4/Flow.git
+    from: 1.0.0
+  LibRawKit:
+    url: https://github.com/akolov/LibRawKit.git
+    branch: main
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit.git
+    from: 5.6.0

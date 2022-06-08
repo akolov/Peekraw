@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  iOSAppTemplate
+//  Peekraw
 //
 //  Created by Alexander Kolov on 2022-05-31.
 //

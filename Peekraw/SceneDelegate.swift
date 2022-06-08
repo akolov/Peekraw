@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  iOSAppTemplate
+//  Peekraw
 //
 //  Created by Alexander Kolov on 2022-05-31.
 //
@@ -20,8 +20,12 @@ extension SceneDelegate: UIWindowSceneDelegate {
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     guard let windowScene = (scene as? UIWindowScene) else { return }
+
+    let main = MainViewController()
+    let navigation = UINavigationController(rootViewController: main)
+
     window = UIWindow(windowScene: windowScene)
-    window?.rootViewController = ViewController()
+    window?.rootViewController = navigation
     window?.makeKeyAndVisible()
   }
 

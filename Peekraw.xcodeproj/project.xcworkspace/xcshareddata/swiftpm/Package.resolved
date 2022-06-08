@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "flow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alexito4/Flow.git",
+      "state" : {
+        "revision" : "af6ef9e25ea9b1734743fa26e14fd4589a92633a",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "librawkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/akolov/LibRawKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5188732b28021e50b6ae43e027f23ccdf439cf18"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
+      }
+    }
+  ],
+  "version" : 2
+}

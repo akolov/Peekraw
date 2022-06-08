@@ -1,13 +1,13 @@
 //
-//  iOSAppTemplateUITestsLaunchTests.swift
-//  iOSAppTemplateUITests
+//  PeekrawUITestsLaunchTests.swift
+//  PeekrawUITests
 //
 //  Created by Alexander Kolov on 2022-05-31.
 //
 
 import XCTest
 
-class iOSAppTemplateUITestsLaunchTests: XCTestCase {
+class PeekrawUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
