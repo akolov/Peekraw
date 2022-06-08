@@ -11,7 +11,13 @@ targets:
     info:
       path: Peekraw/Info.plist
       properties:
-        NSPhotoLibraryAddUsageDescription: "Test"
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Fuji raw image
+            LSHandlerRank: Owner
+            LSItemContentTypes:
+              - com.alexkolov.file-raf
+            CFBundleTypeRole: Viewer
+        NSPhotoLibraryAddUsageDescription: Test
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
           UISceneConfigurations:
@@ -19,6 +25,15 @@ targets:
               - UISceneConfigurationName: Default Configuration
                 UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
         UILaunchStoryboardName: LaunchScreen
+        UTExportedTypeDeclarations:
+          - UTTypeConformsTo:
+              - public.data
+              - public.content
+            UTTypeDescription: Fuji raw image
+            UTTypeIdentifier: com.alexkolov.file-raf
+            UTTypeTagSpecification:
+              public.filename-extension:
+                - raf
     dependencies:
       - package: Flow
       - package: LibRawKit
