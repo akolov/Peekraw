@@ -12,6 +12,12 @@ targets:
     sources:
       - Common
       - Peekraw
+    dependencies:
+      - package: Defaults
+      - package: Flow
+      - package: LibRawKit
+        product: RawKit
+      - package: SnapKit
     info:
       path: Peekraw/Info.plist
       properties:
@@ -38,11 +44,6 @@ targets:
             UTTypeTagSpecification:
               public.filename-extension:
                 - raf
-    dependencies:
-      - package: Flow
-      - package: LibRawKit
-        product: RawKit
-      - package: SnapKit
   PeekrawTests:
     type: bundle.unit-test
     platform: iOS
@@ -56,6 +57,9 @@ targets:
     dependencies:
       - target: Peekraw
 packages:
+  Defaults:
+    url: https://github.com/sindresorhus/Defaults.git
+    from: 6.2.1
   Flow:
     url: https://github.com/alexito4/Flow.git
     from: 1.0.0
