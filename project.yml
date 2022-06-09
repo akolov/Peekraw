@@ -17,9 +17,9 @@ targets:
       properties:
         CFBundleDocumentTypes:
           - CFBundleTypeName: Fuji raw image
-            LSHandlerRank: Owner
+            LSHandlerRank: Default
             LSItemContentTypes:
-              - com.alexkolov.file-raf
+              - com.fuji.raw-image
             CFBundleTypeRole: Viewer
         NSPhotoLibraryAddUsageDescription: Test
         UIApplicationSceneManifest:
@@ -31,10 +31,10 @@ targets:
         UILaunchStoryboardName: LaunchScreen
         UTExportedTypeDeclarations:
           - UTTypeConformsTo:
-              - public.data
               - public.content
+              - public.data
             UTTypeDescription: Fuji raw image
-            UTTypeIdentifier: com.alexkolov.file-raf
+            UTTypeIdentifier: com.fuji.raw-image
             UTTypeTagSpecification:
               public.filename-extension:
                 - raf
