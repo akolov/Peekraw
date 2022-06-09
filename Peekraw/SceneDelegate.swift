@@ -23,6 +23,7 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
     let main = MainViewController()
     let navigation = UINavigationController(rootViewController: main)
+    navigation.navigationBar.prefersLargeTitles = true
 
     window = UIWindow(windowScene: windowScene)
     window?.rootViewController = navigation
