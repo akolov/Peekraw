@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0160C051B5B5EE4EC03FED40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7418ADC0EC42765421B10DA1 /* Assets.xcassets */; };
 		1B94356E57CD376C8F7FBBC5 /* iOSAppTemplateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCED5F8881BC6C1E57282BD /* iOSAppTemplateUITests.swift */; };
+		2B79A24B3687D48DD5C58070 /* Defaults+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68B700156035DA0D010F9B /* Defaults+Keys.swift */; };
 		3018FCE04D9CCEC318BCA7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C6F36E56C38CCDF23BE31C /* AppDelegate.swift */; };
 		349B0D13B49D3335FEDAF462 /* iOSAppTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845230159441F3728E632C28 /* iOSAppTemplateTests.swift */; };
 		3E21A276B43277BD42910B66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 257F79AC8BA7A85981B171C1 /* Defaults */; };
@@ -26,7 +27,6 @@
 		E85B35994140D59B026B6FEA /* Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8243AA28885667958045A25A /* Subviews.swift */; };
 		EE1F486A8952F5C6BF354B8B /* iOSAppTemplateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93B0D4F13CFF99F2530281 /* iOSAppTemplateUITestsLaunchTests.swift */; };
 		FA2BA693921E82DEF29CD39F /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4336BD85B3405BE5ABE5B /* ImageFile.swift */; };
-		FA5C74742851BA5A008062C0 /* Defaults+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C74732851BA5A008062C0 /* Defaults+Keys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +58,7 @@
 		845230159441F3728E632C28 /* iOSAppTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppTemplateTests.swift; sourceTree = "<group>"; };
 		9D40CD49F4634342E892DED2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA9839955373145A09FA302A /* ImageFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileError.swift; sourceTree = "<group>"; };
+		AC68B700156035DA0D010F9B /* Defaults+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Keys.swift"; sourceTree = "<group>"; };
 		B00325F898B2E202797831E5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		B3E4336BD85B3405BE5ABE5B /* ImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFile.swift; sourceTree = "<group>"; };
 		C7881B33EAC2446206022F96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Peekraw.strings; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		D2C5C947D66BCB5B9DE98E11 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		ED4EFE31424F8555B68ACABF /* PeekrawTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PeekrawTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CA0401E4E830017A9497A9 /* PlatformImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformImage.swift; sourceTree = "<group>"; };
-		FA5C74732851BA5A008062C0 /* Defaults+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Keys.swift"; sourceTree = "<group>"; };
 		FAC2F0AA18371726D1A77A48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +137,7 @@
 		A27DB95866C3002C41B98148 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA5C74732851BA5A008062C0 /* Defaults+Keys.swift */,
+				AC68B700156035DA0D010F9B /* Defaults+Keys.swift */,
 				F7CA0401E4E830017A9497A9 /* PlatformImage.swift */,
 				8243AA28885667958045A25A /* Subviews.swift */,
 				B00325F898B2E202797831E5 /* URL.swift */,
@@ -321,9 +321,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3018FCE04D9CCEC318BCA7F7 /* AppDelegate.swift in Sources */,
+				2B79A24B3687D48DD5C58070 /* Defaults+Keys.swift in Sources */,
 				FA2BA693921E82DEF29CD39F /* ImageFile.swift in Sources */,
 				D74C8B046F39B91305DD2859 /* ImageFileError.swift in Sources */,
-				FA5C74742851BA5A008062C0 /* Defaults+Keys.swift in Sources */,
 				852651E0EA22515B07A042E5 /* MainViewController.swift in Sources */,
 				73CEE91D84D53E0B77E8F4C7 /* PlatformImage.swift in Sources */,
 				CF8DD76E18B88771E5324E1E /* SceneDelegate.swift in Sources */,
