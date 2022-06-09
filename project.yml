@@ -9,7 +9,9 @@ targets:
   Peekraw:
     type: application
     platform: iOS
-    sources: Peekraw
+    sources:
+      - Common
+      - Peekraw
     info:
       path: Peekraw/Info.plist
       properties:
