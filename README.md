@@ -1,2 +1,3 @@
-# iOSAppTemplate
-iOS App Template with Storyboard-less SceneDelegate
+# Peekraw
+
+An app to preview digital camera RAW files. Uses libraw to generate previews.
