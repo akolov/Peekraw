@@ -5,6 +5,7 @@
 //  Created by Alexander Kolov on 2022-05-31.
 //
 
+import Cache
 import Defaults
 import Flow
 import Foundation
@@ -14,6 +15,8 @@ import UIKit
 import UniformTypeIdentifiers
 
 class MainViewController: UIViewController {
+
+  private typealias ImageCache = Storage<ImageFile.ID, PlatformImage>
 
   private enum MainListSection: Int {
     case main
@@ -33,9 +36,25 @@ class MainViewController: UIViewController {
     }
   }
 
+  private lazy var cache: ImageCache? = {
+    do {
+      return try Self.prepareCache()
+    }
+    catch {
+      debugPrint(error)
+      return nil
+    }
+  }()
+
+  private var unsupportedFiles = Set<ImageFile.ID>()
+
   private var files = [ImageFile]() {
     didSet {
+      unsupportedFiles.removeAll()
       loadData()
+      DispatchQueue.global(qos: .userInitiated).async {
+        self.prepareThumbnails()
+      }
     }
   }
 
@@ -45,13 +64,20 @@ class MainViewController: UIViewController {
 
   private lazy var dataSource: UICollectionViewDiffableDataSource<MainListSection, ImageFile.ID> = {
     let imageCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, ImageFile> { cell, indexPath, file in
-      let thumbnail = try? file.thumbnail().map { Image(uiImage: $0) }
+      let isUnsupported = self.unsupportedFiles.contains(file.id)
+      let thumbnail: PlatformImage?
+
+      do {
+        thumbnail = try self.cache?.object(forKey: file.id)
+      }
+      catch {
+        thumbnail = nil
+        debugPrint(error)
+      }
+
       cell.contentConfiguration = UIHostingConfiguration {
         VStack {
-          if let thumbnail = thumbnail {
-            thumbnail.resizable().scaledToFit()
-          }
-          else {
+          if isUnsupported {
             ZStack(alignment: .center) {
               Rectangle()
                 .foregroundColor(Color(uiColor: .tertiarySystemFill))
@@ -60,6 +86,14 @@ class MainViewController: UIViewController {
                 .foregroundColor(Color(uiColor: .tertiaryLabel))
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             }
+          }
+          else if let thumbnail = thumbnail {
+            Image(uiImage: thumbnail).resizable().scaledToFit()
+          }
+          else {
+            ProgressView()
+              .progressViewStyle(CircularProgressViewStyle())
+              .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
           }
 
           file.url.map { Text($0.lastPathComponent).font(.caption) }
@@ -76,7 +110,18 @@ class MainViewController: UIViewController {
   // MARK: Subviews
 
   private lazy var openBarButton = UIBarButtonItem(systemItem: .add, primaryAction: openAction)
-  private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+  private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
+    $0.alwaysBounceVertical = true
+    $0.refreshControl = refreshControl
+  }
+
+  private lazy var refreshControl = UIRefreshControl(
+    frame: .zero,
+    primaryAction: UIAction { _ in
+      DispatchQueue.global(qos: .userInitiated).async {
+        self.prepareThumbnails()
+      }
+    })
 
   // MARK: Initialization
 
@@ -124,6 +169,23 @@ class MainViewController: UIViewController {
   }
 
   // MARK: Private Methods
+
+  private static func prepareCache() throws -> ImageCache {
+    return Storage(
+      hybridStorage: HybridStorage(
+        memoryStorage: MemoryStorage(
+          config: MemoryConfig(countLimit: 100)
+        ),
+        diskStorage: try DiskStorage(
+          config: DiskConfig(
+            name: "ThumbnailStorage",
+            maxSize: 100 * 1024 * 1024
+          ),
+          transformer: TransformerFactory.forImage()
+        )
+      )
+    )
+  }
 
   private func prepareCollectionViewLayout() -> UICollectionViewCompositionalLayout {
     let inset: CGFloat = 2
@@ -226,6 +288,32 @@ class MainViewController: UIViewController {
     }
 
     return newFiles
+  }
+
+  private func prepareThumbnails() {
+    for file in files {
+      do {
+        guard let image = try file.thumbnail() else {
+          unsupportedFiles.insert(file.id)
+          continue
+        }
+
+        try cache?.setObject(image, forKey: file.id)
+      }
+      catch {
+        unsupportedFiles.insert(file.id)
+      }
+
+      DispatchQueue.main.async {
+        var snapshot = self.dataSource.snapshot()
+        snapshot.reloadItems([file.id])
+        self.dataSource.apply(snapshot)
+      }
+    }
+
+    DispatchQueue.main.async {
+      self.refreshControl.endRefreshing()
+    }
   }
 
 }

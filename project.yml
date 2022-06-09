@@ -13,6 +13,7 @@ targets:
       - Common
       - Peekraw
     dependencies:
+      - package: Cache
       - package: Defaults
       - package: Flow
       - package: LibRawKit
@@ -57,6 +58,9 @@ targets:
     dependencies:
       - target: Peekraw
 packages:
+  Cache:
+    url: https://github.com/hyperoslo/Cache.git
+    from: 6.0.0
   Defaults:
     url: https://github.com/sindresorhus/Defaults.git
     from: 6.2.1
