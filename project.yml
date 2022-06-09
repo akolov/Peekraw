@@ -3,6 +3,8 @@ options:
   bundleIdPrefix: com.alexkolov
   deploymentTarget:
     iOS: "16.0"
+settings:
+    DEVELOPMENT_TEAM: DLA7THG83Q
 targets:
   Peekraw:
     type: application
