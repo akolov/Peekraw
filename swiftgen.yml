@@ -1,0 +1,5 @@
+strings:
+  inputs: Peekraw/Resources
+  outputs:
+    - templateName: structured-swift5
+      output: Peekraw/Generated/Strings.swift

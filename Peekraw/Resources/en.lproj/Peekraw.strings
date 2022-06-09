@@ -1,0 +1,12 @@
+/* 
+  Peekraw.strings
+  Peekraw
+
+  Created by Alexander Kolov on 2022-06-09.
+  
+*/
+
+"general.open_with_ellipsis" = "Open...";
+"main_view.navigation.title" = "Peekraw";
+"main_view.unsupported_format" = "Unsupported file";
+"main_view.add_files" = "Add files";
